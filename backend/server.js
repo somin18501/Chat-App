@@ -19,7 +19,7 @@ const server = app.listen(port, () => {
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: ["https://glowing-florentine-a3c179.netlify.app"],
+    origin: ["http://localhost:3000"],
   },
 });
 
@@ -65,7 +65,8 @@ io.on("connection", (socket) => {
 app.use(
   cors({
     credentials: true,
-    origin: ["https://glowing-florentine-a3c179.netlify.app"],
+    origin: ["http://localhost:3000"],
+    // origin: ["https://glowing-florentine-a3c179.netlify.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
