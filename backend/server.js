@@ -21,8 +21,8 @@ const io = require("socket.io")(server, {
   cors: {
     origin: ["http://localhost:3000"],
     // origin: ["https://glowing-florentine-a3c179.netlify.app"],
-    // methods: ["GET", "POST"],
-    // credentials: true,
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
