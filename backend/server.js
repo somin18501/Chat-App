@@ -21,8 +21,8 @@ const io = require("socket.io")(server, {
   cors: {
     origin: ["http://localhost:3000"],
     // origin: ["https://glowing-florentine-a3c179.netlify.app"],
-    methods: ["GET", "POST"],
-    credentials: true,
+    // methods: ["GET", "POST"],
+    // credentials: true,
   },
 });
 
@@ -65,30 +65,14 @@ io.on("connection", (socket) => {
   });  
 });
 
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: ["http://localhost:3000"],
-//     // origin: ["https://glowing-florentine-a3c179.netlify.app"],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//   })
-// );
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000"); // Replace with your frontend URL
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, DELETE"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true"); // If you need to include cookies in your requests
-
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-
-  next();
-});
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3000"],
+    // origin: ["https://glowing-florentine-a3c179.netlify.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 app.use(express.json());
 
